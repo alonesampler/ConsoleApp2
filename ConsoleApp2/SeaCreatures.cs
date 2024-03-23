@@ -9,7 +9,7 @@ public class SeaСreatures
 
     public SeaСreatures()
     {
-        Random random = new Random();
+        Random random = new();
         Age = random.Next(1, 4);
         MaxAge = random.Next(15, 20);
         IsAlive = true;
@@ -25,8 +25,8 @@ public class SeaСreatures
 
     public void PrintInfoAboutIsAlive()
     {
-            string isAlive = IsAlive ? "жива" : "мертва";
-            Console.WriteLine($": Возраст - {Age}, Статус - {isAlive}");
+        string isAlive = IsAlive ? "жива" : "мертва";
+        Console.WriteLine($": Возраст - {Age}, Статус - {isAlive}");
     }
 }
 

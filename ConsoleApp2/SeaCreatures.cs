@@ -3,15 +3,16 @@
 /// </summary>
 public class SeaСreatures
 {
-    public int Age;
-    public int MaxAge;
-    public bool IsAlive = true;
+    public int Age { get; private set; }
+    public int MaxAge { get; }
+    public bool IsAlive { get; private set; }
 
     public SeaСreatures()
     {
         Random random = new Random();
         Age = random.Next(1, 4);
         MaxAge = random.Next(15, 20);
+        IsAlive = true;
     }
 
     public void IncreaseAge()
@@ -20,6 +21,12 @@ public class SeaСreatures
             IsAlive = false;
         else
             Age++;
+    }
+
+    public void PrintInfoAboutIsAlive()
+    {
+            string isAlive = IsAlive ? "жива" : "мертва";
+            Console.WriteLine($": Возраст - {Age}, Статус - {isAlive}");
     }
 }
 

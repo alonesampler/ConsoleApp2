@@ -65,4 +65,21 @@
             seaСreatures.IncreaseAge();
         }
     }
+
+    public void PrintSeaCreaturesInfo()
+    {
+        if (SeaCreatures.Count > 0)
+        {
+            for (int i = 0; i < SeaCreatures.Count; i++)
+            {
+                Console.Write($"{SeaCreatures[i].ToString()} {i + 1}");
+                SeaCreatures[i].PrintInfoAboutIsAlive();
+            }
+        }
+        else
+        {
+            Console.WriteLine("В аквариуме нет морских животных.");
+        }
+    }
 }
+

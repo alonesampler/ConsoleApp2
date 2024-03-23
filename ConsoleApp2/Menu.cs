@@ -1,6 +1,12 @@
 ﻿public class Menu
 {
     private int _day = 1;
+    private Aquarium _aquarium;
+    private string[] _point = { "Убрать живность", "Добавить рыбку", "Добавить крабика", "Новый день", "Выйти" };
+    public Menu(Aquarium aquarium)
+    {
+        _aquarium = aquarium;
+    }
 
     public void PrintMenu(Aquarium aquarium)
     {
@@ -9,30 +15,27 @@
             Console.Clear();
             Console.WriteLine($"\nДень {_day}");
             Console.WriteLine("\nИнформация о рыбах:");
-            DisplayFishInfo(aquarium);
+            aquarium.PrintSeaCreaturesInfo();
 
             Console.WriteLine("\nВыберите действие:");
-            Console.WriteLine("1. Убрать живность");
-            Console.WriteLine("2. Добавить рыбку");
-            Console.WriteLine("3. Добавить крабика");
-            Console.WriteLine("4. Новый день");
-            Console.WriteLine("5. Выйти");
+            for(int i = 0; i < _point.Length; i++)
+                Console.WriteLine($"{i+1}. {_point[i]}");
 
             char choice = Console.ReadKey().KeyChar;
 
             switch (choice)
             {
                 case '1':
-                    ExecuteFirstHandler(aquarium);
+                    ExecuteFirstHandler();
                     break;
                 case '2':
-                    ExecuteSecondHandler(aquarium);
+                    ExecuteSecondHandler();
                     break;
                 case '3':
-                    ExecuteThirdHandler(aquarium);
+                    ExecuteThirdHandler();
                     break;
                 case '4':
-                    ExecuteFifthHandler(aquarium);
+                    ExecuteFifthHandler();
                     break;
                 case '5':
                     Console.Clear();
@@ -45,41 +48,25 @@
         }
     }
 
-    public static void DisplayFishInfo(Aquarium aquarium)
-    {
-        if (aquarium.SeaCreatures.Count > 0)
-        {
-            for (int i = 0; i < aquarium.SeaCreatures.Count; i++)
-            {
-                string isAlive = aquarium.SeaCreatures[i].IsAlive ? "жива" : "мертва";
-                Console.WriteLine($"{aquarium.SeaCreatures[i].ToString()} {i + 1}: Возраст - {aquarium.SeaCreatures[i].Age}, Статус - {isAlive}");
-            }
-        }
-        else
-        {
-            Console.WriteLine("В аквариуме нет морских животных.");
-        }
-    }
-
-    private static void ExecuteFirstHandler(Aquarium aquarium)
+    private void ExecuteFirstHandler()
     {
         Console.Clear();
-        DisplayFishInfo(aquarium);
-        aquarium.RemoveSeaCreatures();
+        _aquarium.PrintSeaCreaturesInfo();
+        _aquarium.RemoveSeaCreatures();
     }
 
-    private static void ExecuteSecondHandler(Aquarium aquarium)
+    private void ExecuteSecondHandler()
     {
-        aquarium.AddFish();
+        _aquarium.AddFish();
     }
 
-    private void ExecuteThirdHandler(Aquarium aquarium)
+    private void ExecuteThirdHandler()
     {
-        aquarium.AddCrab();
+        _aquarium.AddCrab();
     }
-    private void ExecuteFifthHandler(Aquarium aquarium)
+    private void ExecuteFifthHandler()
     {
         _day++;
-        aquarium.AddEnlargeAgeLiveness();
+        _aquarium.AddEnlargeAgeLiveness();
     }
 }

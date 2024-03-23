@@ -1,3 +1,3 @@
-﻿Menu menu = new Menu();
-Aquarium aquarium = new Aquarium();
+﻿Aquarium aquarium = new Aquarium();
+Menu menu = new Menu(aquarium);
 menu.PrintMenu(aquarium);

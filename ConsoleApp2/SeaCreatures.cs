@@ -1,7 +1,7 @@
 ﻿/// <summary>
 /// Бывший класс Fish после обновы теперь это отдельный класс 
 /// </summary>
-public class SeaСreatures
+public abstract class SeaСreatures
 {
     public int Age { get; private set; }
     public int MaxAge { get; }

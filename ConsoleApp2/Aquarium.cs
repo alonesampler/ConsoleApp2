@@ -1,18 +1,76 @@
 ﻿public class Aquarium
 {
-    public List<Fish> fish = new List<Fish>();
-    public int capacity = 20;
+    public List<SeaСreatures> SeaCreatures = new List<SeaСreatures>();
+    public const int Capacity = 20;
 
     public void AddFish()
     {
-        fish.Add(new Fish());
+        if (CheckCapacity() == true)
+            SeaCreatures.Add(new Fish());
+    }
+
+    public void AddCrab()
+    {
+        if (CheckCapacity() == true)
+            SeaCreatures.Add(new Crab());
     }
 
     public void RemoveFish(int index)
     {
-        if (index >= 0 && index < fish.Count)
+        if (index >= 0 && index < SeaCreatures.Count)
         {
-            fish.RemoveAt(index);
+            SeaCreatures.RemoveAt(index);
+        }
+    }
+
+    public bool CheckCapacity()
+    {
+        if (SeaCreatures.Count < Capacity)
+        {
+            Console.WriteLine("Рыбка добавлена в аквариум.");
+            return true;
+        }
+        else
+        {
+            Console.WriteLine("Аквариум переполнен, нельзя добавить больше рыбок.");
+            return false;
+        }
+    }
+
+    public void RemoveSeaCreatures()
+    {
+        if (SeaCreatures.Count > 0)
+        {
+            Console.Write("Введите номер рыбки для удаления: ");
+            if (int.TryParse(Console.ReadLine(), out int index))
+            {
+                if (index >= 0 && index <= SeaCreatures.Count)
+                {
+                    SeaCreatures.RemoveAt(index - 1);
+                }
+                else
+                {
+                    Console.WriteLine("Неверный номер рыбки.");
+                    Console.ReadKey();
+                }
+            }
+            else
+            {
+                Console.WriteLine("Неверный ввод.");
+                Console.ReadKey();
+            }
+        }
+        else
+        {
+            Console.WriteLine("В аквариуме нет рыбок.");
+        }
+    }
+
+    public void AddEnlargeAgeLiveness()
+    {
+        foreach (SeaСreatures seaСreatures in SeaCreatures)
+        {
+            seaСreatures.IncreaseAge();
         }
     }
 }

@@ -15,14 +15,6 @@
             SeaCreatures.Add(new Crab());
     }
 
-    public void RemoveFish(int index)
-    {
-        if (index >= 0 && index < SeaCreatures.Count)
-        {
-            SeaCreatures.RemoveAt(index);
-        }
-    }
-
     public bool CheckCapacity()
     {
         if (SeaCreatures.Count < Capacity)

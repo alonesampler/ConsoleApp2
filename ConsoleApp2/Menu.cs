@@ -48,23 +48,23 @@
         }
     }
 
-    private void ExecuteFirstHandler()
+    private static void ExecuteFirstHandler()
     {
         Console.Clear();
         _aquarium.PrintSeaCreaturesInfo();
         _aquarium.RemoveSeaCreatures();
     }
 
-    private void ExecuteSecondHandler()
+    private static void ExecuteSecondHandler()
     {
         _aquarium.AddFish();
     }
 
-    private void ExecuteThirdHandler()
+    private static void ExecuteThirdHandler()
     {
         _aquarium.AddCrab();
     }
-    private void ExecuteFifthHandler()
+    private static void ExecuteFifthHandler()
     {
         _day++;
         _aquarium.AddEnlargeAgeLiveness();
